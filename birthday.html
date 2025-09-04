@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Birthday Surprise for Messi</title>
+<style>
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #fceabb, #f8b500);
+    margin: 0; 
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    color: #5f3c0d;
+    text-align: center;
+  }
+  #welcome {
+    background: rgba(255 255 255 / 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #d49200;
+  }
+  #nicknameInput {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 2px solid #d49200;
+    width: 220px;
+    outline: none;
+  }
+  #enterBtn {
+    background-color: #d48605;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1rem;
+    box-shadow: 0 0 10px #d49200;
+  }
+  #enterBtn:hover {
+    background-color: #bb7f04;
+  }
+  #birthdaySection {
+    display: none;
+    max-width: 600px;
+    padding: 1rem 1.5rem;
+    background: #fff9ea;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #d49200;
+  }
+  #greeting {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  #message {
+    font-size: 1.4rem;
+    margin: 1rem 0 1.5rem;
+    font-style: italic;
+  }
+  #bear {
+    font-size: 7rem;
+    margin-top: 1rem;
+    user-select: none;
+    animation: dance 1s ease infinite alternate;
+  }
+  @keyframes dance {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+  }
+  #bear.cap::after {
+    content: "🎉";
+    position: relative;
+    font-size: 2.5rem;
+    margin-left: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="welcome">
+  <h2>Enter your nickname to enter</h2>
+  <input id="nicknameInput" type="text" placeholder="Your nickname here" />
+  <br />
+  <button id="enterBtn">Enter</button>
+  <div id="bear" class="cap" title="Cute little dancing bear">🐻</div>
+</div>
+
+<div id="birthdaySection">
+  <div id="greeting"></div>
+  <div id="message">Wishing you a wonderful 20th birthday filled with all the joy and love!</div>
+  <div id="bear" class="cap" title="Cute little dancing bear">🐻</div>
+</div>
+
+<script>
+  const enterBtn = document.getElementById('enterBtn');
+  const nicknameInput = document.getElementById('nicknameInput');
+  const welcome = document.getElementById('welcome');
+  const birthdaySection = document.getElementById('birthdaySection');
+  const greeting = document.getElementById('greeting');
+
+  enterBtn.addEventListener('click', () => {
+    const nickname = nicknameInput.value.trim();
+    if(!nickname) {
+      alert('Please enter your nickname!');
+      return;
+    }
+    greeting.textContent = `Happy 20th Birthday my Messi, I love you, ${nickname}!`;
+    welcome.style.display = 'none';
+    birthdaySection.style.display = 'block';
+  });
+
+  nicknameInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+      enterBtn.click();
+    }
+  });
+</script>
+
+</body>
+</html>
+
